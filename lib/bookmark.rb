@@ -1,6 +1,17 @@
+require 'pg'
+
 class Bookmark
 
   def self.all
-    %w[ http://www.google.com http://www.bbc.com http://www.cnn.com ]
-  end
+   if ENV['ENVIRONMENT'] == 'test'
+     conn = PG.connect( dbname: 'bookmark_manager_test' )
+   else
+     conn = PG.connect( dbname: 'bookmark_manager' )
+   end
+   
+   result = conn.exec( "SELECT * FROM bookmarks" )
+   result.map do |bookmark|
+     bookmark['url']
+   end
+ end
 end

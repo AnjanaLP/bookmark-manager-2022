@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 ruby '3.1.0'
 
+gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'webrick'
