@@ -15,7 +15,7 @@ describe Comment do
   end
 
   describe '.where' do
-    it 'returns the persisted comments for the given bookmark' do
+    it 'retrieves the comments for the given bookmark' do
       bookmark = Bookmark.create(title: "Google", url: "http://google.com")
       Comment.create(text: "First test comment", bookmark_id: bookmark.id)
       Comment.create(text: "Second test comment", bookmark_id: bookmark.id)

@@ -15,16 +15,25 @@
         <input type="submit" value="Edit">
       </form>
 
-      <form action="/bookmarks/<%= bookmark.id %>/comments/new">
-        <input type="submit" value="Add comment">
-      </form>
-
       Comments:
       <ul>
         <% bookmark.comments.each do |comment| %>
           <li><%= comment.text %></li>
         <% end %>
       </ul>
+      <form action="/bookmarks/<%= bookmark.id %>/comments/new">
+        <input type="submit" value="Add comment">
+      </form>
+
+      Tags:
+      <ul>
+        <% bookmark.tags.each do |tag| %>
+          <li><%= tag.content %></li>
+        <% end %>
+      </ul>
+      <form action="/bookmarks/<%= bookmark.id %>/tags/new">
+        <input type="submit" value="Add tag">
+      </form>
     </li>
   <% end %>
 </ul>

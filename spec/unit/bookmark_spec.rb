@@ -2,6 +2,7 @@ require 'bookmark'
 
 describe Bookmark do
   let(:comment_class)   { double :comment_class }
+  let(:tag_class)       { double :tag_class }
 
   describe '.all' do
     it 'returns all the bookmarks' do
@@ -81,6 +82,15 @@ describe Bookmark do
 
       expect(comment_class).to receive(:where).with(bookmark_id: bookmark.id)
       bookmark.comments(comment_class)
+    end
+  end
+
+  describe '#tags' do
+    it 'calls the .where method on the Tag class' do
+      bookmark = Bookmark.create(title: "Google", url: "http://www.google.com")
+
+      expect(tag_class).to receive(:where).with(bookmark_id: bookmark.id)
+      bookmark.tags(tag_class)
     end
   end
 end

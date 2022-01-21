@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/reloader'
 require './lib/bookmark'
+require './lib/bookmark_tag'
 require './database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
@@ -31,6 +32,11 @@ class BookmarkManager < Sinatra::Base
     erb :'comments/new'
   end
 
+  get '/bookmarks/:id/tags/new' do
+    @bookmark_id = params[:id]
+    erb :'tags/new'
+  end
+
   post '/bookmarks' do
     flash.next[:error] = "Invalid url submitted" unless Bookmark.create(title: params[:title], url: params[:url])
     redirect '/bookmarks'
@@ -38,6 +44,12 @@ class BookmarkManager < Sinatra::Base
 
   post '/bookmarks/:id/comments' do
     Comment.create(text: params[:text], bookmark_id: params[:id])
+    redirect '/bookmarks'
+  end
+
+  post '/bookmarks/:id/tags' do
+    tag = Tag.create(content: params[:content])
+    BookmarkTag.create(bookmark_id: params[:id], tag_id: tag.id)
     redirect '/bookmarks'
   end
 

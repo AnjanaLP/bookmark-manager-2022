@@ -1,5 +1,6 @@
 require_relative 'database_connection'
 require_relative 'comment'
+require_relative 'tag'
 require 'uri'
 
 class Bookmark
@@ -28,7 +29,9 @@ class Bookmark
   end
 
   def self.update(id:, title:, url:)
-    result = DatabaseConnection.query("UPDATE bookmarks SET title = $1, url = $2 WHERE id = $3 RETURNING id, title, url;" , [title, url, id])
+    result = DatabaseConnection.query(
+      "UPDATE bookmarks SET title = $1, url = $2 WHERE id = $3 RETURNING id, title, url;" , [title, url, id]
+    )
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
@@ -42,6 +45,10 @@ class Bookmark
 
   def comments(comment_class = Comment)
     comment_class.where(bookmark_id: self.id)
+  end
+
+  def tags(tag_class = Tag)
+    tag_class.where(bookmark_id: self.id)
   end
 
   private
