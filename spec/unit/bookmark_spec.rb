@@ -1,6 +1,7 @@
 require 'bookmark'
 
 describe Bookmark do
+  let(:comment_class)   { double :comment_class }
 
   describe '.all' do
     it 'returns all the bookmarks' do
@@ -20,7 +21,7 @@ describe Bookmark do
   describe '.create' do
     it 'adds a new bookmark' do
       bookmark = Bookmark.create(title: "New Bookmark", url: "http://www.new-bookmark.com")
-      persisted_data = persisted_data(id: bookmark.id)
+      persisted_data = persisted_data(table: 'bookmarks', id: bookmark.id)
 
       expect(bookmark).to be_a Bookmark
       expect(bookmark.id).to eq persisted_data['id']
@@ -71,6 +72,15 @@ describe Bookmark do
       expect(updated_bookmark.id).to eq bookmark.id
       expect(updated_bookmark.title).to eq "Updated Bookmark"
       expect(updated_bookmark.url).to eq "http://www.updated-bookmark.com"
+    end
+  end
+
+  describe '#comments' do
+    it 'calls the .where method on the Comment class' do
+      bookmark = Bookmark.create(title: "Google", url: "http://www.google.com")
+
+      expect(comment_class).to receive(:where).with(bookmark_id: bookmark.id)
+      bookmark.comments(comment_class)
     end
   end
 end

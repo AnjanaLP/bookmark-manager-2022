@@ -1,16 +1,9 @@
 require_relative 'database_connection'
+require_relative 'comment'
 require 'uri'
 
 class Bookmark
   VALID_URL_REGEX = /\A#{URI::regexp}\z/
-
-  attr_reader :id, :title, :url
-
-  def initialize(id:, title:, url:)
-    @id = id
-    @title = title
-    @url = url
-  end
 
   def self.all
    result = DatabaseConnection.query( "SELECT * FROM bookmarks" )
@@ -37,6 +30,18 @@ class Bookmark
   def self.update(id:, title:, url:)
     result = DatabaseConnection.query("UPDATE bookmarks SET title = $1, url = $2 WHERE id = $3 RETURNING id, title, url;" , [title, url, id])
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
+  end
+
+  attr_reader :id, :title, :url
+
+  def initialize(id:, title:, url:)
+    @id = id
+    @title = title
+    @url = url
+  end
+
+  def comments(comment_class = Comment)
+    comment_class.where(bookmark_id: self.id)
   end
 
   private

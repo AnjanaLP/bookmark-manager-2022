@@ -26,8 +26,18 @@ class BookmarkManager < Sinatra::Base
     erb :'bookmarks/edit'
   end
 
+  get '/bookmarks/:id/comments/new' do
+    @bookmark_id = params[:id]
+    erb :'comments/new'
+  end
+
   post '/bookmarks' do
     flash.next[:error] = "Invalid url submitted" unless Bookmark.create(title: params[:title], url: params[:url])
+    redirect '/bookmarks'
+  end
+
+  post '/bookmarks/:id/comments' do
+    Comment.create(text: params[:text], bookmark_id: params[:id])
     redirect '/bookmarks'
   end
 
