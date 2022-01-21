@@ -7,6 +7,7 @@ ruby '3.1.0'
 gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
 gem 'webrick'
 
 group :test do

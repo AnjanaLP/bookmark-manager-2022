@@ -27,6 +27,17 @@ describe Bookmark do
       expect(bookmark.title).to eq "New Bookmark"
       expect(bookmark.url).to eq "http://www.new-bookmark.com"
     end
+
+    context 'when the url is invalid' do
+      it 'does not add the bookmark' do
+        Bookmark.create(title: "Invalid Bookmark", url: "invalid-bookmark")
+        expect(Bookmark.all).to be_empty
+      end
+
+      it 'returns false' do
+        expect(Bookmark.create(title: "Invalid Bookmark", url: "invalid-bookmark")).to be false
+      end
+    end
   end
 
   describe '.delete' do
