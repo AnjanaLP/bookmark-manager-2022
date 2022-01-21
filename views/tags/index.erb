@@ -1,0 +1,11 @@
+<h1>Bookmarks with the tag <%= @tag.content %></h1>
+
+<ul>
+  <% @tag.bookmarks.each do |bookmark| %>
+    <li>
+      <a href="<%= bookmark.url %>" target="blank">
+        <%= bookmark.title %>
+      </a>
+    </li>
+  <% end %>
+</ul>

@@ -53,7 +53,7 @@ describe Bookmark do
   end
 
   describe '.find' do
-    it 'returns the bookmark with the given id' do
+    it 'retrieves the bookmark with the given id' do
       bookmark = Bookmark.create(title: "Google", url: "http://www.google.com")
       retrieved_bookmark = Bookmark.find(id: bookmark.id)
 
@@ -73,6 +73,28 @@ describe Bookmark do
       expect(updated_bookmark.id).to eq bookmark.id
       expect(updated_bookmark.title).to eq "Updated Bookmark"
       expect(updated_bookmark.url).to eq "http://www.updated-bookmark.com"
+    end
+  end
+
+  describe '.where' do
+    it 'retrievess all the bookmarks for the given tag id' do
+      bookmark_1 = Bookmark.create(title: "First Bookmark", url: "http://www.first.com")
+      bookmark_2 = Bookmark.create(title: "Second Bookmark", url: "http://www.second.com")
+      bookmark_3 = Bookmark.create(title: "Third Bookmark", url: "http://www.third.com")
+      tag_1 = Tag.create(content: "First tag")
+      tag_2 = Tag.create(content: "Second tag")
+      BookmarkTag.create(bookmark_id: bookmark_1.id, tag_id: tag_1.id)
+      BookmarkTag.create(bookmark_id: bookmark_2.id, tag_id: tag_1.id)
+      BookmarkTag.create(bookmark_id: bookmark_3.id, tag_id: tag_2.id)
+
+      bookmarks = Bookmark.where(tag_id: tag_1.id)
+      bookmark = bookmarks.first
+
+      expect(bookmarks.length).to eq 2
+      expect(bookmark).to be_a Bookmark
+      expect(bookmark.id).to eq bookmark_1.id
+      expect(bookmark.title).to eq "First Bookmark"
+      expect(bookmark.url).to eq "http://www.first.com"
     end
   end
 

@@ -37,6 +37,11 @@ class BookmarkManager < Sinatra::Base
     erb :'tags/new'
   end
 
+  get '/tags/:id/bookmarks' do
+    @tag = Tag.find(id: params[:id])
+    erb :'tags/index'
+  end
+
   post '/bookmarks' do
     flash.next[:error] = "Invalid url submitted" unless Bookmark.create(title: params[:title], url: params[:url])
     redirect '/bookmarks'

@@ -11,6 +11,6 @@ feature 'Creating tags' do
     click_button "Submit tag"
 
     expect(current_path).to eq '/bookmarks'
-    expect(first('.bookmark')).to have_content "Test tag"
+    expect(first('.bookmark')).to have_link "Test tag"
   end
 end
