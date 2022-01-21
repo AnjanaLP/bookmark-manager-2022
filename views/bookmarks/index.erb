@@ -1,4 +1,9 @@
+<% if @current_user %>
+  <h1>Welcome to Bookmark Manager, <%= @current_user.email %></h1>
+<% end %>
+
 <%= flash[:error] %>
+
 <ul>
   <% @bookmarks.each do |bookmark| %>
     <li class="bookmark" id="bookmark-<%= bookmark.id %>">
