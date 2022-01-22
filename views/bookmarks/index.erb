@@ -1,8 +1,11 @@
 <% if @current_user %>
   <h1>Welcome to Bookmark Manager, <%= @current_user.email %></h1>
+  <form action="/sessions/destroy" method="post">
+    <input type="submit" value="Sign out">
+  </form>
 <% end %>
 
-<%= flash[:error] %>
+<%= flash[:notice] %>
 
 <ul>
   <% @bookmarks.each do |bookmark| %>

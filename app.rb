@@ -53,7 +53,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    flash.next[:error] = "Invalid url submitted" unless Bookmark.create(title: params[:title], url: params[:url])
+    flash.next[:notice] = "Invalid url submitted" unless Bookmark.create(title: params[:title], url: params[:url])
     redirect '/bookmarks'
   end
 
@@ -80,9 +80,15 @@ class BookmarkManager < Sinatra::Base
       session[:user_id] = user.id
       redirect '/bookmarks'
     else
-      flash.next[:error] = "Incorrect email/password"
+      flash.next[:notice] = "Incorrect email/password"
       redirect '/sessions/new'
-    end 
+    end
+  end
+
+  post '/sessions/destroy' do
+    session.clear
+    flash.next[:notice] = "Successfully signed out"
+    redirect '/bookmarks'
   end
 
   delete '/bookmarks/:id' do
