@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/flash'
+require 'sinatra/partial'
 require 'sinatra/reloader'
 
 require_relative 'controllers/application_controller'

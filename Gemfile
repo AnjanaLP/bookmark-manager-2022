@@ -9,6 +9,7 @@ gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-flash'
+gem 'sinatra-partial'
 gem 'webrick'
 
 group :test do
