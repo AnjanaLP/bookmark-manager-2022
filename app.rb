@@ -14,8 +14,12 @@ class BookmarkManager < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  get '/' do
+    redirect '/bookmarks'
+  end
+
   get '/bookmarks' do
-    @current_user = User.find(id: session[:user_id])
+    @current_user ||= User.find(id: session[:user_id])
     @bookmarks = Bookmark.all
     erb :'bookmarks/index'
   end

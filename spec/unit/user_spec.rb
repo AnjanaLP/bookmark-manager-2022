@@ -36,7 +36,7 @@ describe User do
   end
 
   describe '.authenticate' do
-    context 'when email and password is correct' do
+    context 'when email and password both correct' do
       it 'returns the user' do
         user = User.create(email: 'test@example.com', password: 'password123')
         authenticated_user = User.authenticate(email: 'test@example.com', password: 'password123')
