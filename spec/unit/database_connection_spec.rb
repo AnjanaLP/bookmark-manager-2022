@@ -1,4 +1,4 @@
-require 'database_connection'
+require './app/models/database_connection'
 
 describe DatabaseConnection do
 

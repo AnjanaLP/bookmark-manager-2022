@@ -1,4 +1,4 @@
-require 'bookmark_tag'
+require './app/models/bookmark_tag'
 
 describe BookmarkTag do
   describe '.create' do

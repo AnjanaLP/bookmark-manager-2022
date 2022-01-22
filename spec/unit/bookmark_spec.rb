@@ -1,4 +1,4 @@
-require 'bookmark'
+require './app/models/bookmark'
 
 describe Bookmark do
   let(:comment_class)   { double :comment_class }

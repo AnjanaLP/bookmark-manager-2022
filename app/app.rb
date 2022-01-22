@@ -1,10 +1,10 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/reloader'
-require './lib/bookmark'
-require './lib/bookmark_tag'
-require './lib/user'
-require './database_connection_setup'
+require_relative 'models/bookmark'
+require_relative 'models/bookmark_tag'
+require_relative 'models/user'
+require_relative 'database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
   enable :sessions, :method_override

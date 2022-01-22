@@ -1,4 +1,4 @@
-require 'tag'
+require './app/models/tag'
 
 describe Tag do
   let(:bookmark_class)    { double :bookmark_class }

@@ -1,4 +1,4 @@
-require 'comment'
+require './app/models/comment'
 
 describe Comment do
   describe '.create' do
