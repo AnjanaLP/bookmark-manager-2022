@@ -1,5 +1,5 @@
-<% flash.keys.each do |type| %>
-  <h3>
-    <%= flash[type] %>
+<% flash.keys.each do |key| %>
+  <h3 class="<%= key %>">
+    <%= flash[key] %>
   </h3>
 <% end %>

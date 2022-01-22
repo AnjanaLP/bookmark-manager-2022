@@ -22,7 +22,7 @@ feature 'User sign in' do
 
       expect(current_path).to eq '/sessions/new'
       expect(page).not_to have_content 'Welcome to Bookmark Manager, test@example.com'
-      expect(page).to have_content 'Incorrect email/password'
+      expect(page).to have_content 'Incorrect email / password'
     end
   end
 
@@ -32,7 +32,7 @@ feature 'User sign in' do
 
       expect(current_path).to eq '/sessions/new'
       expect(page).not_to have_content 'Welcome to Bookmark Manager, test@example.com'
-      expect(page).to have_content 'Incorrect email/password'
+      expect(page).to have_content 'Incorrect email / password'
     end
   end
 end

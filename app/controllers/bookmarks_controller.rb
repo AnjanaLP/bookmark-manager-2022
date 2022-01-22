@@ -26,8 +26,13 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    flash.next[:notice] = "Invalid url submitted" unless Bookmark.create(title: params[:title], url: params[:url])
-    redirect '/bookmarks'
+    bookmark = Bookmark.create(title: params[:title], url: params[:url])
+    if bookmark
+      redirect '/bookmarks'
+    else
+      flash.next[:warning] = "Invalid url submitted"
+      redirect '/bookmarks/new'
+    end 
   end
 
   post '/bookmarks/:id/comments' do

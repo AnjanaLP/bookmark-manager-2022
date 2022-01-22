@@ -1,33 +1,48 @@
 <% if @current_user %>
-  <h1>Welcome to Bookmark Manager, <%= @current_user.email %></h1>
-  <form action="/sessions/destroy" method="post">
-    <input type="submit" value="Sign out">
-  </form>
+  <div class="center">
+    <h1 class="message">Welcome to Bookmark Manager, <%= @current_user.email %></h1>
+
+    <form action="/sessions/destroy" method="post">
+      <input type="submit" value="Sign out">
+    </form>
+  </div>
 <% else %>
-  <h1>Welcome to Bookmark Manager</h1>
-  <form action="/users/new">
-    <input type="submit" value="Sign up">
-  </form>
-  <form action="/sessions/new">
-    <input type="submit" value="Sign in">
-  </form>
+  <div class="center">
+    <h1 class="message">Welcome to Bookmark Manager</h1>
+
+    <form action="/users/new">
+      <input type="submit" value="Sign up">
+    </form>
+
+    <form action="/sessions/new">
+      <input type="submit" value="Sign in">
+    </form>
+  </div>
 <% end %>
 
+<div class="center">
+  <form action="/bookmarks/new" >
+    <input type="submit" name="" value="Add a bookmark">
+  </form>
+</div>
+<hr>
 <ul>
   <% @bookmarks.each do |bookmark| %>
     <li class="bookmark" id="bookmark-<%= bookmark.id %>">
-      <a href="<%= bookmark.url %>" target="blank">
-        <%= bookmark.title %>
-      </a>
+      <h2 class="list">
+        <a href="<%= bookmark.url %>" target="blank">
+          <%= bookmark.title %>
+        </a>
 
-      <form action="/bookmarks/<%= bookmark.id %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete">
-      </form>
+        <form class="delete" ction="/bookmarks/<%= bookmark.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete">
+        </form>
 
-      <form action="/bookmarks/<%= bookmark.id %>/edit">
-        <input type="submit" value="Edit">
-      </form>
+        <form class="edit" action="/bookmarks/<%= bookmark.id %>/edit">
+          <input type="submit" value="Edit">
+        </form>
+      </h2>
 
       Comments:
       <ul>
@@ -53,7 +68,6 @@
         <input type="submit" value="Add tag">
       </form>
     </li>
+    <hr>
   <% end %>
 </ul>
-
-<a href="/bookmarks/new">Add bookmark</a>

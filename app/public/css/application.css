@@ -1,0 +1,98 @@
+.header {
+  padding: 10px;
+  padding-left: 15px;
+  text-align: left;
+  background: #008B8B;
+  color: white;
+  font-size: 15px;
+}
+
+.header a {
+  text-decoration: none;
+  color: white;
+}
+
+li.bookmark {
+    list-style-type: none;
+}
+
+a.link {
+  text-decoration: none;
+  color: #008B8B;
+}
+
+input[type=submit] {
+  width: 15%;
+  background-color: #008B8B;
+  color: white;
+  padding: 5px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #A9A9A9;
+}
+
+.delete input[type=submit] {
+  width: 15%;
+  background-color: #B22222;
+  color: white;
+  padding: 5px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete input[type=submit]:hover {
+  background-color: red;
+}
+
+.edit input[type=submit] {
+  width: 15%;
+  background-color: grey;
+  color: white;
+  padding: 5px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit input[type=submit]:hover {
+  background-color: #A9A9A9;
+}
+
+hr { display: block; height: 1px;
+    border: 0; border-top: 9px solid #008B8B;
+    margin: 1em 0; padding: 0; }
+
+.center {
+  text-align: center;
+}
+
+.message {
+  color: #A9A9A9;
+}
+
+.warning {
+  color: #B22222;
+}
+
+.notice {
+  color: #A9A9A9;
+}
+
+input {
+  width: 20%;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}

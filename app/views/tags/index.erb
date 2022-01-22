@@ -3,9 +3,15 @@
 <ul>
   <% @tag.bookmarks.each do |bookmark| %>
     <li>
-      <a href="<%= bookmark.url %>" target="blank">
-        <%= bookmark.title %>
-      </a>
+      <h2 class="list">
+        <a href="<%= bookmark.url %>" target="blank">
+          <%= bookmark.title %>
+        </a>
+      </h2>
     </li>
   <% end %>
 </ul>
+
+<form action="/bookmarks">
+  <input type="submit" value="Back to bookmarks">
+</form>

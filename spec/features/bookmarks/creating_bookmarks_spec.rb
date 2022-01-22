@@ -3,12 +3,12 @@ feature 'Creating bookmarks' do
     visit '/bookmarks'
     expect(page).not_to have_content "http://www.new-bookmark.com"
 
-    click_link "Add bookmark"
+    click_button "Add a bookmark"
     expect(current_path).to eq '/bookmarks/new'
 
     fill_in :title, with: "New Bookmark"
     fill_in :url, with: "http://www.new-bookmark.com"
-    click_button "Add bookmark"
+    click_button "Submit"
 
     expect(current_path).to eq '/bookmarks'
     expect(page).to have_link("New Bookmark", href: "http://www.new-bookmark.com")
@@ -18,9 +18,9 @@ feature 'Creating bookmarks' do
     visit 'bookmarks/new'
     fill_in :title, with: "Invalid"
     fill_in :url, with: "invalid"
-    click_button "Add bookmark"
+    click_button "Submit"
 
-    expect(current_path).to eq '/bookmarks'
+    expect(current_path).to eq '/bookmarks/new'
     expect(page).not_to have_link("Invalid", href: "invalid")
     expect(page).to have_content "Invalid url submitted"
   end
