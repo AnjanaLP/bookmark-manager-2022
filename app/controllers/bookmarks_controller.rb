@@ -32,7 +32,7 @@ class BookmarkManager < Sinatra::Base
     else
       flash.next[:warning] = "Invalid url submitted"
       redirect '/bookmarks/new'
-    end 
+    end
   end
 
   post '/bookmarks/:id/comments' do

@@ -1,6 +1,7 @@
 require_relative 'database_connection'
 require_relative 'comment'
 require_relative 'tag'
+require_relative 'bookmark_tag'
 require 'uri'
 
 class Bookmark
@@ -19,7 +20,9 @@ class Bookmark
    Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
-  def self.delete(id:)
+  def self.delete(id:, comment_class: Comment, bookmark_tag_class: BookmarkTag)
+    comment_class.delete(bookmark_id: id)
+    bookmark_tag_class.delete(bookmark_id: id)
     DatabaseConnection.query("DELETE FROM bookmarks WHERE id = $1;", [id])
   end
 

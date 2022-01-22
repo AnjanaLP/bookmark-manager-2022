@@ -34,7 +34,7 @@
           <%= bookmark.title %>
         </a>
 
-        <form class="delete" ction="/bookmarks/<%= bookmark.id %>" method="post">
+        <form class="delete" action="/bookmarks/<%= bookmark.id %>" method="post">
           <input type="hidden" name="_method" value="delete">
           <input type="submit" value="Delete">
         </form>
