@@ -2,7 +2,7 @@ require 'pg'
 
 class DatabaseConnection
 
-  def self.setup(dbname)
+  def self.setup(dbname = nil)
     @connection = PG.connect( dbname: dbname )
   end
 

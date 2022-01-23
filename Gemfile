@@ -6,6 +6,7 @@ ruby '3.1.0'
 
 gem 'bcrypt'
 gem 'pg'
+gem 'rake'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-flash'
