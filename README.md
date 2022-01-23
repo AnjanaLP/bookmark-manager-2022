@@ -63,19 +63,11 @@ $ bundle install
 
 ### Setup the databases
 You will need to have the PostgreSQL database management system installed to proceed.
-
-Connect to psql:
 ```
-$ psql
+$ rake setup
 ```
-
-Create the development and test databases:
-```
-CREATE DATABASE bookmark_manager;
-CREATE DATABASE bookmark_manager_test;
-```
-
-Connect to each database in psql and run the SQL scripts in the db/migrations folder in the given order.
+You will now have two databases: `bookmark_manager` for the development environment, and `bookmark_manager_test` for the test environment.
+Both databases will have the tables needed to run the application.
 
 ### Run the app
 ```
