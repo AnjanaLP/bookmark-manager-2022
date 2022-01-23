@@ -77,7 +77,7 @@ Visit http://localhost:9292
 
 ### Run tests
 ```
-rspec
+$ rspec
 ```
 
 ### Technologies used
@@ -85,6 +85,7 @@ rspec
 * Capybara
 * HTML
 * PostgreSQL
+* Rake
 * Ruby
 * RSpec
 * Sinatra
